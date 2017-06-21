@@ -688,18 +688,44 @@ import & export
 //   // do something with data.listingId
 // });
 
-function test() {
-  let number = 10
+function square() {
+  let record = 10;
   new Promise(function(resolve, reject) {
     // A mock async action using setTimeout
-    setTimeout(function() { resolve(number); }, 3000);
+    setTimeout(function() { resolve(record); }, 3000);
   })
-    .then(function(num) { console.log('first then: ', num); return num * 2; });
-  return number;
+    .then(function(data) {
+      console.log('first then: ', data);
+      return data * data;
+    });
+  return record;
 }
 
-const mock = test();
-console.log('test' + mock);
+function submit() {
+  // ...
+  const result = square(); // => still 10
+  // finalHandler(result);
+}
+submit();
+
+// function square() {
+//   let record = 10;
+//   return new Promise(function(resolve, reject) {
+//     // A mock async action using setTimeout
+//     setTimeout(function() { resolve(record); }, 3000);
+//   })
+//     .then(function(data) {
+//       console.log('first then: ', data);
+//       return data * data;
+//     });
+// }
+//
+// function submit() {
+//   // ...
+//   const result = square()
+//     .then(result => finalHandler(result);
+// }
+// submit();
 
 /*
 * http://javascript.ruanyifeng.com/advanced/promise.html#toc13
