@@ -671,22 +671,45 @@ import & export
  * */
 
 // bad
-$(this).trigger('listingUpdated', listing.id);
+// $(this).trigger('listingUpdated', listing.id);
+//
+// // ...
+//
+// $(this).on('listingUpdated', (e, listingId) => {
+//   // do something with listingId
+// });
+//
+// // good
+// $(this).trigger('listingUpdated', { listingId: listing.id });
+//
+// // ...
+//
+// $(this).on('listingUpdated', (e, data) => {
+//   // do something with data.listingId
+// });
 
-// ...
+function test() {
+  let number = 10
+  new Promise(function(resolve, reject) {
+    // A mock async action using setTimeout
+    setTimeout(function() { resolve(number); }, 3000);
+  })
+    .then(function(num) { console.log('first then: ', num); return num * 2; });
+  return number;
+}
 
-$(this).on('listingUpdated', (e, listingId) => {
-  // do something with listingId
-});
+const mock = test();
+console.log('test' + mock);
 
-// good
-$(this).trigger('listingUpdated', { listingId: listing.id });
-
-// ...
-
-$(this).on('listingUpdated', (e, data) => {
-  // do something with data.listingId
-});
+/*
+* http://javascript.ruanyifeng.com/advanced/promise.html#toc13
+* https://wohugb.gitbooks.io/ecmascript-6/content/docs/promise.html
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+* http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html
+* https://stackoverflow.com/questions/15151602/sending-data-between-jquery-deferred-objects
+* http://jsfiddle.net/L96cD/
+* https://www.airpair.com/javascript/posts/eleven-mistakes-developers-javascript#2-return-before-asynchronous-callbacks-have-completed
+* */
 
 
 
