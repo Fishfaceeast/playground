@@ -670,7 +670,7 @@ import & export
 * This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event.
  * */
 
-// bad
+// // bad
 // $(this).trigger('listingUpdated', listing.id);
 //
 // // ...
@@ -688,6 +688,28 @@ import & export
 //   // do something with data.listingId
 // });
 
+/*
+* Design Pattern
+* */
+
+const MyClass = function() {
+  this.name = "seven";
+  return {
+    name: "anne"
+  }
+}
+
+let test = new MyClass();
+console.log(test);
+
+const OtherClass = function() {
+  this.name = "seven";
+  return "anne";
+}
+
+let test2 = new OtherClass();
+console.log(test2);
+
 function test() {
   let number = 10
   new Promise(function(resolve, reject) {
@@ -702,17 +724,14 @@ const mock = test();
 console.log('test' + mock);
 
 /*
-* http://javascript.ruanyifeng.com/advanced/promise.html#toc13
-* https://wohugb.gitbooks.io/ecmascript-6/content/docs/promise.html
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-* http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html
-* https://stackoverflow.com/questions/15151602/sending-data-between-jquery-deferred-objects
-* http://jsfiddle.net/L96cD/
-* https://www.airpair.com/javascript/posts/eleven-mistakes-developers-javascript#2-return-before-asynchronous-callbacks-have-completed
-* */
-
-
-
+ * http://javascript.ruanyifeng.com/advanced/promise.html#toc13
+ * https://wohugb.gitbooks.io/ecmascript-6/content/docs/promise.html
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+ * http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html
+ * https://stackoverflow.com/questions/15151602/sending-data-between-jquery-deferred-objects
+ * http://jsfiddle.net/L96cD/
+ * https://www.airpair.com/javascript/posts/eleven-mistakes-developers-javascript#2-return-before-asynchronous-callbacks-have-completed
+ * */
 
 
 
