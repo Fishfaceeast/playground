@@ -5,7 +5,7 @@
     <title>Form</title>
 </head>
 <body>
-<form id="address">
+<form action="/action_page.php" method="post" id="address">
     <input type="radio" name="gender" value="male" checked > Male<br>
     <input type="text" class="required" data-rule="number"><br>
     <input type="text" class="required" data-rule="word"><br>
@@ -20,25 +20,23 @@
     </textarea><br>
     <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
     <input type="checkbox" name="vehicle2" value="Car" > I have a car <br>
-    <button class="main">提交</button>
+    <button type="submit" class="main">submit</button>
 </form>
 <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
 <script src="./answer.js"></script>
 <script>
     var $form = $('#address');
     var validator = $form.validator();
-    $('.main').on('click', function(e) {
-        e.preventDefault();
+    $form.on('submit', function(e) {
         var isValid = validator.validateForm();
         if(isValid && !$(this).hasClass('disabled')) {
             // todo submit
-            $(this).addClass('disabled')
-            $.get('https://www.baidu.com', function(data){
-                debugger
-            })
-            $(this).removeClass('disabled')
+//            $(this).addClass('disabled')
+            console.log('can submit')
+            return true;
         } else {
-            alert('invalid!')
+            console.log('invalid');
+            return false;
         }
     })
 </script>

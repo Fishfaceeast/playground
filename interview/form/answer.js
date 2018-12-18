@@ -64,6 +64,7 @@
           invalidFields.push($(this));
         }
       });
+      console.log(invalidFields.length <= 0)
       return invalidFields.length <= 0;
     }
   }
