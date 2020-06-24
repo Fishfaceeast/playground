@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<form action="/action_page.php" method="post" id="address">
+    <input type="radio" name="gender" value="male" checked > Male<br>
+    <input type="text" class="required" data-rule="number"><br>
+    <input type="text" class="required" data-rule="word"><br>
+    <select name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+    </select><br>
+    <textarea name="message" rows="10" cols="30">
+        The cat was playing in the garden.
+    </textarea><br>
+    <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+    <input type="checkbox" name="vehicle2" value="Car" > I have a car <br>
+    <button type="submit" class="main">submit</button>
+</form>
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+<script src="./answer.js"></script>
+<script>
+    var $form = $('#address');
+    var validator = $form.validator();
+    $form.on('submit', function(e) {
+        var isValid = validator.validateForm();
+        if(isValid && !$(this).hasClass('disabled')) {
+            // todo submit
+//            $(this).addClass('disabled')
+            console.log('can submit')
+            return true;
+        } else {
+            console.log('invalid');
+            return false;
+        }
+    })
+</script>
+</body>
+</html>

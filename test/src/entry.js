@@ -688,66 +688,27 @@ import & export
 //   // do something with data.listingId
 // });
 
-/*
- * Design Pattern
- * */
-
-const MyClass = function() {
-  this.name = "seven";
-  return {
-    name: "anne"
-  }
-}
-
-let test = new MyClass();
-console.log(test);
-
-const OtherClass = function() {
-  this.name = "seven";
-  return "anne";
-}
-
-let test2 = new OtherClass();
-console.log(test2);
-
-function square() {
-  let record = 10;
-  new Promise(function(resolve, reject) {
-    // A mock async action using setTimeout
-    setTimeout(function() { resolve(record); }, 3000);
-  })
-    .then(function(data) {
-      console.log('first then: ', data);
-      return data * data;
-    });
-  return record;
-}
-
-function submit() {
-  // ...
-  const result = square(); // => still 10
-  // finalHandler(result);
-}
-submit();
-
-// function square() {
-//   let record = 10;
-//   return new Promise(function(resolve, reject) {
-//     // A mock async action using setTimeout
-//     setTimeout(function() { resolve(record); }, 3000);
-//   })
-//     .then(function(data) {
-//       console.log('first then: ', data);
-//       return data * data;
-//     });
+// /*
+//  * Design Pattern
+//  * */
+//
+// const MyClass = function() {
+//   this.name = "seven";
+//   return {
+//     name: "anne"
+//   }
 // }
 //
-// function submit() {
-//   // ...
-//   const result = square()
-//     .then(result => finalHandler(result);
+// let test = new MyClass();
+// console.log(test);
+//
+// const OtherClass = function() {
+//   this.name = "seven";
+//   return "anne";
 // }
-// submit();
+//
+// let test2 = new OtherClass();
+// console.log(test2);
 
 /*
  * http://javascript.ruanyifeng.com/advanced/promise.html#toc13
@@ -759,11 +720,381 @@ submit();
  * https://www.airpair.com/javascript/posts/eleven-mistakes-developers-javascript#2-return-before-asynchronous-callbacks-have-completed
  * */
 
+// function square() {
+//   let record = 10;
+//   new Promise(function(resolve, reject) {
+//     // A mock async action using setTimeout
+//     setTimeout(function() { resolve(record); }, 3000);
+//   })
+//     .then(function(data) {
+//       console.log('first then: ', data);
+//       return data * data;
+//     });
+//   return record;
+// }
+//
+// function submit() {
+//   // ...
+//   const result = square(); // => still 10
+//   console.log(result)
+//   // finalHandler(result);
+// }
+// submit();
 
+// function square() {
+//   let record = 10;
+//   return new Promise(function(resolve, reject) {
+//     // A mock async action using setTimeout
+//     setTimeout(function() { resolve(record); }, 1000);
+//   })
+//     .then(function(data) {
+//       console.log('first then: ', data);
+//       return data * data;
+//     });
+// }
+//
+// function submit() {
+//   // ...
+//   const result = square()
+//     .then(result => finalHandler(result));
+// }
+// function finalHandler(data) {
+//   console.log(data);
+// }
+// submit();
 
+// var Type = {};
+// for(var i = 0, type; type = ['String', 'Array', 'Number'][i++];) {
+//   (function(t){
+//     Type[`is${t}`] = function(obj) {
+//       console.log(t)
+//       return Object.prototype.toString.call(obj) === `[object ${t}]`
+//     }
+//   }) (type);
+// }
+// console.log(Type.isString('test'));
 
+// const curring = (fn) => {
+//   let args = [];
+//   return () => {
+//     if(arguments.length === 0) {
+//       return fn.apply(this, args);
+//     } else {
+//       [].push.apply(args, arguments);
+//       return arguments.callee;
+//     }
+//   }
+// }
+//
+// var cost = (() => {
+//   let money = 0;
+//   return () => {
+//     for(let i = 0, l = arguments.length; i < l; i++) {
+//       money += arguments[i];
+//     }
+//     return money;
+//   }
+// })();
+//
+// cost = curring(cost);
+//
+// cost(100);
+// cost(200);
+// cost(300);
+//
+// console.log(cost());
 
+// const ensureNum = entity => typeof entity === 'string' ? parseInt(entity) : entity;
+// const addDelta = (num, delta) => num + delta;
+// const incrementEach = (arr, delta) => arr.map(ensureNum).map((num, delta) => num - delta);
+// console.log(incrementEach([10,15,20], 5));
 
+// const CreateDiv = function(html) {
+//   this.html = html;
+//   console.log(this.html)
+//   this.init();
+// }
+// CreateDiv.prototype.init = function() {
+//   let div = document.createElement('div');
+//   div.innerHTML = this.html;
+//   document.body.appendChild(div);
+// }
+//
+// const ProxySingletonCreateDiv = (function () {
+//   let instance;
+//   return function(html) {
+//     console.log(instance)
+//     if(!instance) {
+//       instance = new CreateDiv(html);
+//     }
+//     return instance;
+//   }
+// })();
+//
+// let a = new ProxySingletonCreateDiv('sven1');
+// let b = new ProxySingletonCreateDiv('sven2');
+// console.log(a === b);
+
+// var getSingle = function(fn) {
+//   var result;
+//   return function() {
+//     console.log(arguments);
+//     return result || (result = fn.apply(this, arguments));
+//   }
+// }
+//
+// var createLoginLayer = function(m, n) {
+//   console.log(n);
+// }
+//
+// var createSingleLoginLayer = getSingle(createLoginLayer);
+// console.log(createSingleLoginLayer)
+// var loginLayer = createSingleLoginLayer(3, 10, 2000);
+
+/*
+* ch5
+* */
+// var tween = {
+//   linear: function( t, b, c, d ){
+//     return c*t/d + b;
+//   },
+//   easeIn: function( t, b, c, d ){
+//     return c * ( t /= d ) * t + b;
+//   },
+//   strongEaseIn: function(t, b, c, d){
+//     return c * ( t /= d ) * t * t * t * t + b;
+//   },
+//   strongEaseOut: function(t, b, c, d){
+//     return c * ( ( t = t / d - 1) * t * t * t * t + 1 ) + b;
+//   },
+//   sineaseIn: function( t, b, c, d ){
+//     return c * ( t /= d) * t * t + b;
+//   },
+//   sineaseOut: function(t,b,c,d){
+//     return c * ( ( t = t / d - 1) * t * t + 1 ) + b;
+//   }
+// };
+//
+// var Animate = function( dom ){
+//   this.dom = dom; // 进行运动的dom 节点
+//   this.startTime = 0; // 动画开始时间
+//   this.startPos = 0; // 动画开始时，dom 节点的位置，即dom 的初始位置
+//   this.endPos = 0; // 动画结束时，dom 节点的位置，即dom 的目标位置
+//   this.propertyName = null; // dom 节点需要被改变的css 属性名
+//   this.easing = null; // 缓动算法
+//   this.duration = null; // 动画持续时间
+// };
+//
+//
+// Animate.prototype.start = function( propertyName, endPos, duration, easing ){
+//   this.startTime = +new Date; // 动画启动时间
+//   this.startPos = this.dom.getBoundingClientRect()[ propertyName ]; // dom 节点初始位置
+//   this.propertyName = propertyName; // dom 节点需要被改变的CSS 属性名
+//   this.endPos = endPos; // dom 节点目标位置
+//   this.duration = duration; // 动画持续事件
+//   this.easing = tween[ easing ]; // 缓动算法
+//   var self = this;
+//   var timeId = setInterval(function(){ // 启动定时器，开始执行动画
+//     if ( self.step() === false ){ // 如果动画已结束，则清除定时器
+//       clearInterval( timeId );
+//     }
+//   }, 19 );
+// };
+//
+// Animate.prototype.step = function(){
+//   var t = +new Date; // 取得当前时间
+//   if ( t >= this.startTime + this.duration ){ // (1)
+//     this.update( this.endPos ); // 更新小球的CSS 属性值
+//     return false;
+//   }
+//   var pos = this.easing( t - this.startTime, this.startPos, this.endPos - this.startPos, this.duration );
+//   // pos 为小球当前位置
+//   this.update( pos ); // 更新小球的CSS 属性值
+// };
+//
+// Animate.prototype.update = function( pos ){
+//   this.dom.style[ this.propertyName ] = pos + 'px';
+// };
+//
+// var div = document.getElementById( 'div' );
+// var animate = new Animate( div );
+// animate.start( 'left', 500, 1000, 'strongEaseOut' );
+// // animate.start( 'top', 1500, 500, 'strongEaseIn' );
+
+/*
+* ch6
+* */
+
+// var myImage = (function(){
+//   var imgNode = document.createElement( 'img' );
+//   document.body.appendChild( imgNode );
+//   return {
+//     setSrc: function( src ){
+//       imgNode.src = src;
+//     }
+//   }
+// })();
+// var proxyImage = (function(){
+//   var img = new Image;
+//   img.onload = () => {
+//     myImage.setSrc( img.src );
+//   }
+//   return {
+//     setSrc: function( src ){
+//       myImage.setSrc( './loading.gif' );
+//       img.src = src;
+//     }
+//   }
+// })();
+// proxyImage.setSrc( 'https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif' );
+
+/*
+* ch11
+* */
+
+// var Beverage = function( param ){
+//   var boilWater = function(){
+//     console.log( '把水煮沸' );
+//   };
+//   var brew = param.brew || function(){
+//       throw new Error( '必须传递brew 方法' );
+//     };
+//   var pourInCup = param.pourInCup || function(){
+//       throw new Error( '必须传递pourInCup 方法' );
+//     };
+//   var addCondiments = param.addCondiments || function(){
+//       throw new Error( '必须传递addCondiments 方法' );
+//     };
+//   var F = function(){};
+//   F.prototype.init = function(){
+//     boilWater();
+//     brew();
+//     pourInCup();
+//     addCondiments();
+//   };
+//   return F;
+// };
+// var Coffee = Beverage({
+//   brew: function(){
+//     console.log( '用沸水冲泡咖啡' );
+//   },
+//   pourInCup: function(){
+//     console.log( '把咖啡倒进杯子' );
+//   },
+//   addCondiments: function(){
+//     console.log( '加糖和牛奶' );
+//   }
+// });
+//
+// var Tea = Beverage({
+//   brew: function(){
+//     console.log( '用沸水浸泡茶叶' );
+//   },
+//   pourInCup: function(){
+//     console.log( '把茶倒进杯子' );
+//   },
+//   addCondiments: function(){
+//     console.log( '加柠檬' );
+//   }
+// });
+// var coffee = new Coffee();
+// coffee.init();
+// var tea = new Tea();
+// tea.init();
+//
+// console.log(coffee.init === tea.init);
+
+// //抽象类继承
+// var Beverage = function(){};
+// Beverage.prototype.boilWater = function(){
+//   console.log( '把水煮沸' );
+// };
+//
+// Beverage.prototype.brew = function(){}; // 空方法，应该由子类重写
+// Beverage.prototype.pourInCup = function(){}; // 空方法，应该由子类重写
+// Beverage.prototype.addCondiments = function(){}; // 空方法，应该由子类重写
+// Beverage.prototype.init = function(){
+//   this.boilWater();
+//   this.brew();
+//   this.pourInCup();
+//   this.addCondiments();
+// };
+//
+// var Coffee = function(){};
+// Coffee.prototype = new Beverage();
+//
+// Coffee.prototype.brew = function(){
+//   console.log( '用沸水冲泡咖啡' );
+// };
+// Coffee.prototype.pourInCup = function(){
+//   console.log( '把咖啡倒进杯子' );
+//
+// };
+// Coffee.prototype.addCondiments = function(){
+//   console.log( '加糖和牛奶' );
+// };
+// var coffee = new Coffee();
+// coffee.init();
+//
+// var Tea = function(){};
+// Tea.prototype = new Beverage();
+// Tea.prototype.brew = function(){
+//   console.log( '用沸水浸泡茶叶' );
+// };
+// Tea.prototype.pourInCup = function(){
+//   console.log( '把茶倒进杯子' );
+// };
+// Tea.prototype.addCondiments = function(){
+//   console.log( '加柠檬' );
+// };
+// var tea = new Tea();
+// tea.init();
+//
+// console.log(coffee.init === tea.init);
+
+// es6 class vs prototype-chain
+// function P(name, id) {
+//   this.name = name;
+//   this.id = id;
+// }
+// P.prototype.compose = function(name, id){
+//   return name + '-' + id;
+// }
+// var p = new P('Jack', 11212121);
+//
+// class Person {
+//   constructor(name, id) {
+//     this.name = name;
+//     this.id = id;
+//   }
+//
+//   compose() {
+//     return `${this.name}-${this.id}`;
+//   }
+// }
+//
+// var person = new Person('Jeff', 88212901);
+//
+// var bar = new Bar();
+// console.log(bar)
+// function Bar() {};
+// // new Foo(); // ReferenceError
+// // class Foo {};
+
+class Widget {
+
+  // 公有方法
+  foo (baz) {
+    this._bar(baz);
+  }
+
+  // 私有方法
+  _bar(baz) {
+    return this.snaf = baz;
+  }
+
+  // ...
+}
 
 
 
